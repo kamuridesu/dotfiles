@@ -1,0 +1,31 @@
+{{ if eq .chezmoi.osRelease.name "Linux Mint" -}}
+
+#!/bin/bash
+
+echo "Install base packages"
+sudo apt install {{ range .packages.linux.mint.apt -}}
+{{ . | quote }} {{ end }}
+
+echo "Extra setup"
+{{ range .packages.linux.mint.extraSetup -}}
+{{ . }}
+{{ end -}}
+
+echo "Fetch keys into keyrings" 
+{{ range .packages.linux.mint.keyring -}}
+curl -fsSL "{{ .source }}" | gpg --dearmor | sudo tee {{ .target }} >/dev/null
+{{ end -}}
+
+sudo apt update
+
+echo "Add deb repositories"
+{{ range .packages.linux.mint.source -}}
+echo "{{ .deb }}" | sudo tee {{ .target }} >/dev/null
+sudo chmod a+r {{ .target }}
+{{ end -}}
+
+echo "Install extra packages"
+sudo apt install {{ range .packages.linux.mint.extras -}}
+{{ . | quote }} {{ end }}
+
+{{ end -}}
