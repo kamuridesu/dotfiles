@@ -37,4 +37,9 @@ echo "Setup ZSH"
 [[ -f  $ZSH/oh-my-zsh.sh ]] || {{ . }}
 {{ end -}}
 
+echo "Setup common packages"
+{{ range .packages.linux.common }}
+{{ . }}
+{{ end -}}
+
 {{ end -}}

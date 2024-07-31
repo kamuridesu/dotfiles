@@ -1,0 +1,21 @@
+export "PATH=$PATH:/opt/flutter/bin:$HOME/.bin"
+export CHROME_EXECUTABLE=/usr/bin/chromium
+export CAPACITOR_ANDROID_STUDIO_PATH=$HOME/.bin/bin/studio.sh
+export PATH="$PATH:$HOME/.jbang/bin"
+export PATH="$PATH:/home/kamuri/.bin"
+export PATH="$PATH:/home/kamuri/bin"
+export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:${$(go env GOPATH)}/bin"
+export SDKMAN_DIR="$HOME/.sdkman"
+export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.cargo/bin"
+export NVM_DIR="$HOME/.nvm"
+export EDITOR="nvim"
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+\. "$HOME/.cargo/env"  # This loads cargo env

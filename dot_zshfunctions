@@ -1,0 +1,10 @@
+tf () {
+	tofu $@ && notify-send -a Terraform Terraform OK && return 0 || notify-send -a Terraform Fail && return 1
+}
+
+zshreload() {
+	source ~/.zshrc
+}
+
+[[ -s "./.sdkmanrc" ]] && sdk env > /dev/null
+[[ -s "./venv" ]] && \. ./venv/bin/activate
