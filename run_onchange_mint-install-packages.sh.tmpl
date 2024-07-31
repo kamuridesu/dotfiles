@@ -29,3 +29,12 @@ sudo apt install {{ range .packages.linux.mint.extras -}}
 {{ . | quote }} {{ end }}
 
 {{ end -}}
+
+{{ if eq .chezmoi.os "linux" -}}
+
+echo "Setup ZSH"
+{{ range .packages.linux.zsh }}
+[[ -f  $ZSH/oh-my-zsh.sh ]] || {{ . }}
+{{ end -}}
+
+{{ end -}}

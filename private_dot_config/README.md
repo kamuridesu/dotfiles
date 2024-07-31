@@ -1,0 +1,1 @@
+Source: https://github.com/IcaroPablo/dotfiles/tree/openbsd/private_dot_config/nvim
