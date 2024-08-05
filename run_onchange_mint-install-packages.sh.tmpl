@@ -13,14 +13,14 @@ echo "Extra setup"
 
 echo "Fetch keys into keyrings" 
 {{ range .packages.linux.mint.keyring -}}
-curl -fsSL "{{ .source }}" | gpg --dearmor | sudo tee {{ .target }} >/dev/null
+[[ -f {{ .target }} ]] || curl -fsSL "{{ .source }}" | gpg --dearmor | sudo tee {{ .target }} >/dev/null
 {{ end -}}
 
 sudo apt update
 
 echo "Add deb repositories"
 {{ range .packages.linux.mint.source -}}
-echo "{{ .deb }}" | sudo tee {{ .target }} >/dev/null
+[[ -f {{ .target }} ]] || echo "{{ .deb }}" | sudo tee {{ .target }} >/dev/null
 sudo chmod a+r {{ .target }}
 {{ end -}}
 
