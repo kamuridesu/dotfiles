@@ -29,6 +29,7 @@ packages:
         - cloc
         - apt-transport-https
         - zsh
+        - jq
       source:
         - deb: >
             deb [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main
