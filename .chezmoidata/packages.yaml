@@ -67,4 +67,4 @@ packages:
         - docker-buildx
       extraSetup:
         - "[[ -f /etc/apt/keyrings/opentofu.gpg ]] || curl -fsSL https://get.opentofu.org/opentofu.gpg | sudo tee /etc/apt/keyrings/opentofu.gpg >/dev/null"
-        - sudo add-apt-repository ppa:git-core/ppa
+        - "[[ -f /etc/apt/sources.list.d/git-core-ppa-jammy.list ]] || sudo add-apt-repository ppa:git-core/ppa"
