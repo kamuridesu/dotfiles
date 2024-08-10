@@ -1,6 +1,6 @@
-{{ if eq .chezmoi.osRelease.name "Linux Mint" -}}
-
 #!/bin/bash
+
+{{ if or (eq .chezmoi.osRelease.name "Linux Mint") (eq .chezmoi.osRelease.name "Ubuntu" -}}
 
 echo "Install base packages"
 sudo apt install {{ range .packages.linux.mint.apt -}}
