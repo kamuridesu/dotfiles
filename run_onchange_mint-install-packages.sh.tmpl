@@ -2,6 +2,8 @@
 
 {{ if or (eq .chezmoi.osRelease.name "Linux Mint") (eq .chezmoi.osRelease.name "Ubuntu") -}}
 
+export $(cat /etc/os-release | grep VERSION_CODENAME)
+
 echo "Install base packages"
 sudo apt install {{ range .packages.linux.mint.apt -}}
 {{ . | quote }} {{ end }}
