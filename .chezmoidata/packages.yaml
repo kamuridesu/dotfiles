@@ -55,6 +55,8 @@ packages:
           target: /etc/apt/trusted.gpg.d/anydesk.gpg
         - source: https://packages.opentofu.org/opentofu/tofu/gpgkey
           target: /etc/apt/keyrings/opentofu-repo.gpg
+        - source: https://download.docker.com/linux/debian/gpg
+          target: /etc/apt/keyrings/docker.asc
       extras:
         - anydesk
         - tofu
