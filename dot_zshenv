@@ -1,4 +1,5 @@
 export "PATH=$PATH:/opt/flutter/bin:$HOME/.bin"
+export "PATH=$PATH:/home/kamuri/.local/lib/python3.10/site-packages/bin"
 export CHROME_EXECUTABLE=/usr/bin/chromium
 export CAPACITOR_ANDROID_STUDIO_PATH=$HOME/.bin/bin/studio.sh
 export PATH="$PATH:$HOME/.jbang/bin"
