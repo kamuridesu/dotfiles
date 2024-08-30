@@ -11,7 +11,7 @@ docker_prune() {
 		--help | -h)
 			echo "Prune docker volumes, build caches, dangling images and containers, unused networks."
 			echo "Use -f to force/skip confirmation"
-			exit 0
+			return
 		;;
 	esac
 	docker system prune $1
