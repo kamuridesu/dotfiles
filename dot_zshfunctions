@@ -7,6 +7,12 @@ zshreload() {
 }
 
 docker_prune() {
+	case "$1" in
+		--help | -h)
+			echo "Prune docker volumes, build caches, dangling images and containers, unused networks."
+			echo "Use -f to force/skip confirmation"
+		;;
+	esac
 	docker system prune $1
 	docker rmi $1 $(docker images -q)
 	docker buildx prune $1
