@@ -6,5 +6,13 @@ zshreload() {
 	source ~/.zshrc
 }
 
+docker_prune() {
+	docker system prune $1
+	docker rmi $1 $(docker images -q)
+	docker buildx prune $1
+	docker volume prune $1
+	docker network prune $1
+}
+
 [[ -s "./.sdkmanrc" ]] && sdk env > /dev/null
 [[ -s "./venv" ]] && \. ./venv/bin/activate
