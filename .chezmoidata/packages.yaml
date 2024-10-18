@@ -40,10 +40,10 @@ packages:
           target: /etc/apt/sources.list.d/anydesk-stable.list
         - deb: deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main
           target: /etc/apt/sources.list.d/helm-stable-debian.list
-        - deb: deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu   jammy stable
+        - deb: deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable
           target: /etc/apt/sources.list.d/docker.list
       keyring:
-        - source: https://pkgs.k8s.io/core:/stable:/v1.30/deb/Release.key
+        - source: https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key
           target: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
         - source: https://baltocdn.com/helm/signing.asc
           target: /usr/share/keyrings/helm.gpg
@@ -51,8 +51,6 @@ packages:
           target: /etc/apt/trusted.gpg.d/anydesk.gpg
         - source: https://packages.opentofu.org/opentofu/tofu/gpgkey
           target: /etc/apt/keyrings/opentofu-repo.gpg
-        - source: https://download.docker.com/linux/debian/gpg
-          target: /etc/apt/keyrings/docker.asc
       extras:
         - anydesk
         - tofu
@@ -65,4 +63,5 @@ packages:
         - docker-buildx
       extraSetup:
         - "[[ -f /etc/apt/keyrings/opentofu.gpg ]] || curl -fsSL https://get.opentofu.org/opentofu.gpg | sudo tee /etc/apt/keyrings/opentofu.gpg >/dev/null"
-        - "[[ -f /etc/apt/sources.list.d/git-core-ppa-jammy.list ]] || sudo add-apt-repository ppa:git-core/ppa"
+        - "[[ -f /etc/apt/sources.list.d/git-core-ppa-$(cat /etc/*release | grep VERSION_CODENAME | cut -d '=' -f 2).list ]] || sudo add-apt-repository ppa:git-core/ppa -y"
+        - "[[ -f /etc/apt/keyrings/docker.asc ]] || sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc && sudo chmod a+r /etc/apt/keyrings/docker.asc"
