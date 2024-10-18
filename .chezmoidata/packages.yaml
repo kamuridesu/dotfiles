@@ -26,6 +26,7 @@ packages:
         - zsh
         - jq
         - unzip
+        - zip
       source:
         - deb: >
             deb [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main
@@ -42,6 +43,8 @@ packages:
           target: /etc/apt/sources.list.d/helm-stable-debian.list
         - deb: deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo "$VERSION_CODENAME") stable
           target: /etc/apt/sources.list.d/docker.list
+        - deb: deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main
+          target: /etc/apt/sources.list.d/hashicorp.list
       keyring:
         - source: https://pkgs.k8s.io/core:/stable:/v1.31/deb/Release.key
           target: /etc/apt/keyrings/kubernetes-apt-keyring.gpg
