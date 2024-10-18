@@ -17,7 +17,6 @@ packages:
         - python3-pip
         - python-is-python3
         - tmux
-        - vagrant
         - maven
         - cowsay
         - nload
@@ -51,6 +50,10 @@ packages:
           target: /etc/apt/trusted.gpg.d/anydesk.gpg
         - source: https://packages.opentofu.org/opentofu/tofu/gpgkey
           target: /etc/apt/keyrings/opentofu-repo.gpg
+        - source: https://downloads.k8slens.dev/keys/gpg
+          target: /usr/share/keyrings/lens-archive-keyring.gpg
+        - source: https://apt.releases.hashicorp.com/gpg
+          target: /usr/share/keyrings/hashicorp-archive-keyring.gpg
       extras:
         - anydesk
         - tofu
@@ -61,6 +64,7 @@ packages:
         - docker.io
         - docker-compose-plugin
         - docker-buildx
+        - vagrant
       extraSetup:
         - "[[ -f /etc/apt/keyrings/opentofu.gpg ]] || curl -fsSL https://get.opentofu.org/opentofu.gpg | sudo tee /etc/apt/keyrings/opentofu.gpg >/dev/null"
         - "[[ -f /etc/apt/sources.list.d/git-core-ppa-$(cat /etc/*release | grep VERSION_CODENAME | cut -d '=' -f 2).list ]] || sudo add-apt-repository ppa:git-core/ppa -y"
