@@ -25,6 +25,7 @@ packages:
         - apt-transport-https
         - zsh
         - jq
+        - unzip
       source:
         - deb: >
             deb [signed-by=/etc/apt/keyrings/opentofu.gpg,/etc/apt/keyrings/opentofu-repo.gpg] https://packages.opentofu.org/opentofu/tofu/any/ any main
