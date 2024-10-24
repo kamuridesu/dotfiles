@@ -6,19 +6,14 @@ zshreload() {
 	source ~/.zshrc
 }
 
-docker_prune() {
-	case "$1" in
-		--help | -h)
-			echo "Prune docker volumes, build caches, dangling images and containers, unused networks."
-			echo "Use -f to force/skip confirmation"
-			return
-		;;
-	esac
-	docker system prune $1
-	docker rmi $1 $(docker images -q)
-	docker buildx prune $1
-	docker volume prune $1
-	docker network prune $1
+kamuclone() {
+	git clone "$@"
+	repo_name=$(basename "$@" .git)
+	cd "$repo_name" || { echo "Failed to change directory to $repo_name"; return 1; }
+	if git remote get-url origin | grep -q "github"; then
+		git config user.email "myk.gata14@gmail.com"
+		git config user.name "Kamuri Amorim"
+	fi
 }
 
 [[ -s "./.sdkmanrc" ]] && sdk env > /dev/null
